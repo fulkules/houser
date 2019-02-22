@@ -33,5 +33,5 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 // ENDPOINTS
-
+app.get('/api/list', ctrl.getList)
 
