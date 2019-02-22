@@ -6,13 +6,21 @@ class Dashboard extends Component {
         super()
 
         this.state = {
-
+            houseList: []
         }
+        this.handleClick = this.handleClick.bind(this)
     }
+
+    handleClick(e){
+        this.props.history.push('/wizard');
+    }
+
     render(){
+        let mappedList = this.state.houseList.map( house => <House /> )
         return(
             <div>
-                <House />
+                { mappedList }
+                <button onClick={ (e) => this.handleClick(e.target.value) }>Add New Property</button>
             </div>
         )
     }

@@ -25,12 +25,13 @@ app.use(session({
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
     console.log('connected to db')
+    
+    const PORT = SERVER_PORT
+    app.listen(PORT, () => 
+        console.log(`Port ${PORT} is live!`)
+    )
 })
 
 // ENDPOINTS
 
 
-const PORT = SERVER_PORT
-app.listen(PORT, () => 
-console.log(`Port ${PORT} is live!`)
-)
