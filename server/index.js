@@ -11,15 +11,15 @@ const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
 const app = express();
 
-app.use(express.json)
+app.use(express.json())
 
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
-    cookie: (
-        maxAge= 1000 * 60 * 60 * 48
-    )
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24
+    }
 }))
 
 massive(CONNECTION_STRING).then(db => {
@@ -33,5 +33,10 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 // ENDPOINTS
-app.get('/api/list', ctrl.getList)
+app.get('/api/list', ctrl.getList);
 
+app.post('/api/list', ctrl.addHome);
+
+app.delete('/api/list/:id', ctrl.deleteHome);
+
+app.put('/api/list/:id', ctrl.updateHome);

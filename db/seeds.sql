@@ -13,3 +13,7 @@ insert into home
 values ('Young Barry', '202 E Madison', 'Paris', 'IL', 61944),
     ('Tony Stark', '1 Malibu Point', 'Malibu', 'CA', 90264),
     ('Steven Strange', '177a Bleecker Street', 'Greenwich', 'NY', 12834)
+
+delete
+from home
+where id = $1

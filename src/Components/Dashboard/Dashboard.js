@@ -13,7 +13,10 @@ class Dashboard extends Component {
     }
 
     componentDidMount(){
-        axios.get()
+        axios.get('/api/list').then(res => {
+            console.log('incoming')
+            this.setState({ houseList: res.data })
+        })
     }
 
     handleClick(e){
@@ -21,7 +24,11 @@ class Dashboard extends Component {
     }
 
     render(){
-        let mappedList = this.state.houseList.map( house => <House /> )
+        const mappedList = this.state.houseList.map( house => {
+            return(
+                <House key={house.id} /> 
+            )
+        })
         return(
             <div>
                 { mappedList }
