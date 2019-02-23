@@ -74,8 +74,8 @@ this.setState({
         
         return(
             <div>
-                <input id="mtgAmt" onChange={ this.handleInput } value={this.state.mtgAmt} placeholder="Mortgage Amount"/>
-                <input id="rent" onChange={ this.handleInput } value={this.state.rent} placeholder="Desired Rent"/>                
+                <input maxLength="5"  id="mtgAmt" onChange={ this.handleInput } value={this.state.mtgAmt} placeholder="Mortgage Amount"/>
+                <input maxLength="5"  id="rent" onChange={ this.handleInput } value={this.state.rent} placeholder="Desired Rent"/>                
                 <button onClick={this.handleComplete}>Complete</button>
             </div>
         )

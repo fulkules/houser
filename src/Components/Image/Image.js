@@ -22,11 +22,14 @@ class Image extends Component{
     }
 
     render(){
+        const {updateStep2} = this.props
         return(
             <div>
                 <input id="imgUrl" onChange={ this.handleInput } value={this.state.imgURl} placeholder="Image URL"/>
-                <Link to="/wizard/step3"><button>Next</button></Link>
-                <Link to="/wizard/step1"><button>Back</button></Link>
+                <Link to="/wizard/step3"><button  onClick={
+                        () => updateStep2(this.state)  }>Next</button></Link>
+                <Link to="/wizard/step1"><button  onClick={
+                        () => updateStep2(this.state)  }>Back</button></Link>
             </div>
         )
     }

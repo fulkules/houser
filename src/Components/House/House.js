@@ -8,10 +8,9 @@ export default function House(props){
             <h5>{props.house.city}</h5>
             <h5>{props.house.state}</h5>
             <h5>{props.house.zipcode}</h5>
-            <h5>{props.house.image}</h5>
             <h5>{props.house.monthly_mortgage_amount}</h5>
             <h5>{props.house.desired_rent}</h5>
-            <img alt={props.house.name} height="80px" width="120px" />
+            <img src="{props.house.image}" alt={props.house.name} height="80px" width="120px" />
 
             
             

@@ -51,19 +51,21 @@ class NewListing extends Component{
                     id="state" 
                     onChange={ this.handleInput } 
                     value={this.state.state} 
+                    maxLength="2"
                     placeholder="state"
                 />
                 <input 
                     id="zipcode" 
+                    maxLength="5"
                     onChange={ this.handleInput } 
                     value={this.state.zipcode} 
                     placeholder="zipcode"
                 />
-                <Link to="/wizard/step2">
+                {/* <Link to="/wizard/step2">
                     <button onClick={
                         () => updateStep1(this.state)  }>Save Changes
                     </button>
-                </Link>
+                </Link> */}
 
                 <Link to="/wizard/step2"><button onClick={
                         () => updateStep1(this.state)  }>Next</button></Link>
