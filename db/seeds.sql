@@ -17,3 +17,12 @@ values ('Young Barry', '202 E Madison', 'Paris', 'IL', 61944),
 delete
 from home
 where id = $1
+
+alter table home
+add image varchar(255)
+
+alter table home
+add monthly_mortgage_amount integer
+
+alter table home
+add desired_rent integer

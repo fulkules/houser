@@ -8,9 +8,10 @@ module.exports = {
     },
     addHome: (req, res) => {
         const db = req.app.get('db');
-        const { home } = req.body;
+        const { name, address, city, state, zipcode } = req.body;
+        console.log(req.body)
 
-        db.add_home([home]).then(response => {
+        db.add_home([name, address, city, state, zipcode]).then(response => {
             res.status(200).send(response);
         })
     },
