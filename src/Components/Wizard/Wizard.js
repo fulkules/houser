@@ -3,27 +3,21 @@ import { Switch, Route, Link } from 'react-router-dom';
 import NewListing from '../NewListing/NewListing';
 import Image from '../Image/Image';
 import MortRent from '../MortRent/MortRent';
+import {connect} from 'react-redux';
+import {cancel} from '../../ducks/reducer';
 
 class Wizard extends Component {
-    constructor(props){
-        super(props)
+    // constructor(props){
+    //     super(props)
 
-        this.state = {
+    //     this.state = {
             
-        }
-    }
-
-    
-
-
-
-    // handleClick(){
-
+    //     }
     // }
-
     
 
     render(){
+        const {cancel} = this.props;
         return(
         <div>
             <h1>Wizard</h1>
@@ -32,11 +26,10 @@ class Wizard extends Component {
                 <Route component={ Image } path="/wizard/step2" />
                 <Route component={ MortRent } path="/wizard/step3" />
             </Switch>
-            <Link to="/wizard/step1"><button>Next</button></Link>
-            <Link to="/"><button>Cancel</button></Link>
+            <Link to="/"><button onClick={cancel}>Cancel</button></Link>
         </div>
         )
     }
 }
 
-export default Wizard;
+export default connect(() => {return {}}, {cancel})(Wizard);

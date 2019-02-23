@@ -1,3 +1,5 @@
 DELETE
 FROM home
-WHERE id = $1
+WHERE id = $1;
+
+-- SELECT * FROM 

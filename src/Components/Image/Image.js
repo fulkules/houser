@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { updateStep2 } from '../../ducks/reducer';
 
 
 class Image extends Component{
@@ -14,7 +15,7 @@ class Image extends Component{
     }
 
     handleInput(e){
-        console.log(e.target.id)
+        // console.log(e.target.id)
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -24,6 +25,7 @@ class Image extends Component{
         return(
             <div>
                 <input id="imgUrl" onChange={ this.handleInput } value={this.state.imgURl} placeholder="Image URL"/>
+                <Link to="/wizard/step3"><button>Next</button></Link>
                 <Link to="/wizard/step1"><button>Back</button></Link>
             </div>
         )
@@ -31,4 +33,10 @@ class Image extends Component{
     
 }
 
-export default Image;
+function mapStateToProps(state) {
+    return {
+        imgUrl: state.imgUrl
+    }
+}
+
+export default connect(mapStateToProps, { updateStep2 } )(Image);

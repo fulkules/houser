@@ -60,13 +60,13 @@ class NewListing extends Component{
                     placeholder="zipcode"
                 />
                 <Link to="/wizard/step2">
-                    <button onClick={ () => {
-                        updateStep1(this.state)
-                        } }>Save Changes
+                    <button onClick={
+                        () => updateStep1(this.state)  }>Save Changes
                     </button>
                 </Link>
 
-                <Link to="/wizard/step2"><button>Next</button></Link>
+                <Link to="/wizard/step2"><button onClick={
+                        () => updateStep1(this.state)  }>Next</button></Link>
             </div>
         )
     }

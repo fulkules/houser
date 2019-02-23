@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { updateStep3 } from '../../ducks/reducer';
+import store from '../../ducks/store'
 
 
 
@@ -9,26 +11,58 @@ class MortRent extends Component{
         super()
 
         this.state = {
-            mtgAmt: ``,
-            rent: ``
+            name:'',
+            address: '',
+            city: '',
+            state: '',
+            zipcode: '',
+            imgUrl: '',
+            mtgAmt: '',
+            rent:''
+
         }
         this.handleInput = this.handleInput.bind(this);
+        this.handleComplete = this.handleComplete.bind(this)
     }
 
+componentDidMount() {
+    console.log(this.props)
+this.setState({
+    name:this.props.name,
+    address:this.props.address,
+    city:this.props.city,
+    state:this.props.state,
+    zipcode: this.props.zipcode,
+    imgUrl: this.props.imgUrl,
+    mtgAmt: this.props.mtgAmt,
+    rent: this.props.rent
+})
+
+}
+
+
     handleInput(e){
-        console.log(e.target.id)
+        console.log(this.state)
         this.setState({
             [e.target.id]: e.target.value
         })
     }
 
-    handleComplete(e){
-        const { mtgAmt, rent } = this.state;
+    handleComplete(){
+        const {updateStep3} = this.props
+        // console.log(this.state)
+        updateStep3(this.state)
+        const { name, address, city, state, zipcode, imgUrl, mtgAmt, rent } = this.state;
         axios.post('/api/list', {
-            mtgAmt: mtgAmt,
-            rent: rent
+            name,
+            address,
+            city,
+            state,
+            zipcode,
+            imgUrl,
+            mtgAmt,
+            rent
         }).then(res => {
-            console.log(res)
             this.setState({ 
                 home: res.data
             })
@@ -37,15 +71,29 @@ class MortRent extends Component{
     }
 
     render(){
+        
         return(
             <div>
                 <input id="mtgAmt" onChange={ this.handleInput } value={this.state.mtgAmt} placeholder="Mortgage Amount"/>
                 <input id="rent" onChange={ this.handleInput } value={this.state.rent} placeholder="Desired Rent"/>                
-                <button onClick={ e => this.handleComplete(e.target.value) }>Complete</button>
+                <button onClick={this.handleComplete}>Complete</button>
             </div>
         )
     }
     
 }
 
-export default MortRent;
+function mapStateToProps(state) {
+    return {
+        name: state.name,
+        address: state.address,
+        city: state.city,
+        state: state.state,
+        zipcode: state.zipcode,
+        imgUrl: state.imgUrl,
+        mtgAmt: state.mtgAmt,
+        rent: state.rent
+    }
+}
+
+export default connect(mapStateToProps, { updateStep3 } )(MortRent);
