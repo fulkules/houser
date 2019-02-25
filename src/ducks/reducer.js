@@ -17,9 +17,8 @@ const CANCEL = "CANCEL"
 function reducer(state = initialState, action) {
     switch(action.type) {
         case UPDATE_STEP1:
-        // console.log(action.payload)
         // console.log(state)
-        console.log('hit')
+        // console.log('hit')
             return {
                 ...state, 
                 name: action.payload.name, 
@@ -29,7 +28,7 @@ function reducer(state = initialState, action) {
                 zipcode: action.payload.zipcode,
             }
         case UPDATE_STEP2:
-            return { ...state, imgUrl: action.payload }
+            return { ...state, imgUrl: action.payload.imgUrl }
         case UPDATE_STEP3:
             return { ...state, mtgAmt: action.payload.mtgAmt, rent: action.payload.rent }
         case CANCEL:

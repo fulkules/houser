@@ -53,6 +53,7 @@ this.setState({
         // console.log(this.state)
         updateStep3(this.state)
         const { name, address, city, state, zipcode, imgUrl, mtgAmt, rent } = this.state;
+        // console.log(33333333333333333, this.state)
         axios.post('/api/list', {
             name,
             address,

@@ -1,6 +1,6 @@
 .House {
-    width: 100vw;
-    background-color: #71CDCD;
+    width: 100%;
+    border: 3px solid  #71CDCD;
     margin: 20px 0;
     position: relative;
 }
