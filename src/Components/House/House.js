@@ -1,11 +1,16 @@
 import React from 'react';
 import './House.css';
+import { Z_BLOCK } from 'zlib';
 
 export default function House(props){
     // console.log(11111111, props)
     return(
-        <div className="House" style={{display: 'flex', width: '100%', justifyContent: 'space-evenly', padding: 20}}>
-            <img src={props.house.image} alt={props.house.name} height="100px" width="150px" />
+        <div className="House" style={{display: 'flex', width: '100%', justifyContent: 'space-evenly', padding: '10px'}}>
+            <div className="mainImg" style={{display: 'block'}}>
+                <img src={props.house.image} alt={props.house.name} height="100px" width="150px" />
+                <button onClick={ () => props.deleteHome(props.house.id)} style={{height: '20px'}} >Delete</button>
+            </div>
+
             <div className="mainInfo">
                 <h3>Name: {props.house.name}</h3>
                 <h5>Address: {props.house.address}</h5>
@@ -21,7 +26,6 @@ export default function House(props){
             </div>
             
             
-            <button onClick={ () => props.deleteHome(props.house.id)}>Delete</button>
 
             <br /><br /><br />
         </div>
