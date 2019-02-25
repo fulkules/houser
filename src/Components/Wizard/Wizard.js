@@ -5,6 +5,7 @@ import Image from '../Image/Image';
 import MortRent from '../MortRent/MortRent';
 import {connect} from 'react-redux';
 import {cancel} from '../../ducks/reducer';
+import './Wizard.css';
 
 class Wizard extends Component {
     // constructor(props){
@@ -19,7 +20,7 @@ class Wizard extends Component {
     render(){
         const {cancel} = this.props;
         return(
-        <div>
+        <div className="Wizard">
             <h1>Wizard</h1>
             <Switch>
                 <Route component={ NewListing } path="/wizard/step1" />
